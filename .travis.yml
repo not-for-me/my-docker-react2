@@ -5,8 +5,8 @@ services:
 before_install:
   - docker build -t jwj0831/my-docker-react2 -f ./client/Dockerfile.dev ./client
 
-scripts:
-  - docker run jwj0831/my-docker-react2 npm run test -- --coverages
+script:
+  - docker run -e CI=true jwj0831/my-docker-react2 npm run test -- --coverage
 
 after_success:
   - docker build -t jwj0831/multi-client ./client
